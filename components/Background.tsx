@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { EffectCallback, useEffect } from "react"
 import { useAppDispatch, useAppSelector } from "../src/redux/hooks"
 import { getUI, setTheme } from "../src/redux/reducers/uiReducer"
 
@@ -6,7 +6,9 @@ const Background = (props: any) => {
   const dispatch = useAppDispatch()
   const darkmode = useAppSelector((state) => state.ui.darkmode)
 
-  useEffect(() => dispatch(getUI("")), [dispatch])
+  useEffect(() => {
+    dispatch(getUI("darkmode"))
+  }, [dispatch])
   const baseStyle =
     "h-screen duration-300 ease-in-out min-h-screen duration-300 ease-in-out"
 

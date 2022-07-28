@@ -23,8 +23,8 @@ export const ui = createSlice({
       localStorage.setItem("darkmode", action.payload)
       state.darkmode = checkIfTrue(action.payload)
     },
-    getUI: (state, action: PayloadAction<void>) => {
-      const darkmode = localStorage.getItem("darkmode") || ""
+    getUI: (state, action: PayloadAction<string>) => {
+      const darkmode = localStorage.getItem(action.payload) || ""
       state.darkmode = checkIfTrue(darkmode)
     },
   },
