@@ -1,26 +1,30 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@layer components {
+  .paper {
+    @apply dark:bg-black bg-white dark:text-white duration-300 ease-in-out;
   }
-  body {
-    color: white;
-    background: black;
+  .title {
+    @apply font-bold text-4xl sm:text-5xl xl:text-6xl m-4;
+  }
+  .subtitle {
+    @apply font-bold text-lg sm:text-xl xl:text-3xl mb-8;
+  }
+  .heading {
+    @apply font-semibold text-base sm:text-lg xl:text-2xl text-[#68da23] m-4;
+  }
+  .subheading {
+    @apply font-semibold text-sm sm:text-base xl:text-xl text-white dark:text-[#412854] bg-[#120a3d]/80 dark:bg-white/80 p-2 rounded-xl my-8;
+  }
+  .body {
+    @apply font-normal text-sm sm:text-base xl:text-xl;
+  }
+  .list {
+    @apply font-light text-sm sm:text-base xl:text-lg flex flex-col gap-2;
+  }
+  .link {
+    @apply capitalize;
   }
 }
