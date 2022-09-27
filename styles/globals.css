@@ -27,4 +27,10 @@
   .link {
     @apply capitalize;
   }
+  .hide {
+    @apply opacity-0 blur-sm -translate-x-10 duration-1000;
+  }
+  .show {
+    @apply opacity-100 blur-none translate-x-0;
+  }
 }
