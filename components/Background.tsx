@@ -1,4 +1,4 @@
-import { EffectCallback, useEffect } from "react"
+import { useEffect } from "react"
 import { useAppDispatch, useAppSelector } from "../src/redux/hooks"
 import { getUI, setTheme } from "../src/redux/reducers/uiReducer"
 

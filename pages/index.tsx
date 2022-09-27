@@ -3,41 +3,42 @@ import Link from "next/link"
 import { useRef, useEffect } from "react"
 import { Anchor, Background, Footer, Header, SEO } from "../components"
 
-const index = () => {
-  const dimension = 120
-  const works: Array<{
-    label: string
-    href: string
-  }> = [
-    {
-      label: "Foodie Blog",
-      href: "https://foodie-blog.vercel.app/",
-    },
-    {
-      label: "Questionnaire",
-      href: "https://next-genetics.vercel.app/",
-    },
-    {
-      label: "Resume",
-      href: "https://gian-carlo.vercel.app/",
-    },
-  ]
+const works: Array<{
+  label: string
+  href: string
+}> = [
+  {
+    label: "Foodie Blog",
+    href: "https://foodie-blog.vercel.app/",
+  },
+  {
+    label: "Questionnaire",
+    href: "https://next-genetics.vercel.app/",
+  },
+  {
+    label: "Resume",
+    href: "https://gian-carlo.vercel.app/",
+  },
+]
 
-  const observer = useRef<IntersectionObserver | null>(null)
+const Index = () => {
+  const dimension = 120
+  const observer = useRef<IntersectionObserver | null>()
 
   useEffect(() => {
-    let options = {
-      root: document.querySelector("#scrollArea"),
-      rootMargin: "0px",
-      threshold: 0.4,
-    }
-
-    observer.current = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) return entry.target.classList.add("show")
-        return entry.target.classList.remove("show")
-      })
-    }, options)
+    observer.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) return entry.target.classList.add("show")
+          return entry.target.classList.remove("show")
+        })
+      },
+      {
+        root: document.querySelector("#scrollArea"),
+        rootMargin: "0px",
+        threshold: 0.4,
+      }
+    )
     const hiddenElements = document.querySelectorAll("section")
     hiddenElements.forEach((el) => observer.current?.observe(el))
   }, [])
@@ -141,4 +142,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index
