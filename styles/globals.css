@@ -2,33 +2,93 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply font-sans text-xl leading-normal;
+  }
+  section {
+    padding-block: 5rem;
+  }
+}
+
 @layer components {
   .paper {
     @apply dark:bg-black bg-white dark:text-white duration-300 ease-in-out;
   }
+  .wrapper {
+    @apply max-w-3xl mx-auto px-4 duration-300;
+  }
+  .profile {
+    @apply relative
+    isolate
+    bg-slate-300
+    dark:bg-blue-syntexia
+
+    dark:after:from-violet-syntexia
+    dark:after:to-green-syntexia
+
+    after:bg-gradient-to-tr
+    after:from-violet-syntexia
+    after:to-violet-syntexia
+    after:absolute
+    after:inset-0
+    after:-skew-y-6
+    after:-z-20;
+  }
+  .wavy {
+    @apply bg-violet-syntexia;
+    /* mask generated from https://css-generators.com/wavy-shapes */
+    --mask: radial-gradient(42.94px at 50% 58px, #000 99%, #0000 101%)
+        calc(50% - 40px) 0/80px 51% repeat-x,
+      radial-gradient(42.94px at 50% -38px, #0000 99%, #000 101%) 50% 20px/80px
+        calc(51% - 20px) repeat-x,
+      radial-gradient(42.94px at 50% calc(100% - 58px), #000 99%, #0000 101%)
+        calc(50% - 40px) 100%/80px 51% repeat-x,
+      radial-gradient(42.94px at 50% calc(100% + 38px), #0000 99%, #000 101%)
+        50% calc(100% - 20px) / 80px calc(51% - 20px) repeat-x;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+  }
   .title {
-    @apply font-bold text-4xl sm:text-5xl xl:text-6xl m-4;
+    @apply m-4
+    text-slate-300
+    dark:text-green-syntexia
+    font-bold text-4xl sm:text-5xl xl:text-6xl;
   }
   .subtitle {
-    @apply font-bold text-lg sm:text-xl xl:text-3xl mb-8;
+    @apply mb-8
+    text-slate-300
+    dark:text-green-syntexia
+    font-bold text-lg sm:text-xl xl:text-3xl;
   }
   .heading {
-    @apply font-semibold text-base sm:text-lg xl:text-2xl text-[#68da23] m-4;
+    @apply m-4
+    text-slate-300 dark:text-green-syntexia 
+    font-semibold text-base sm:text-lg xl:text-2xl;
   }
   .subheading {
-    @apply font-semibold text-sm sm:text-base xl:text-xl text-white dark:text-[#412854] bg-[#120a3d]/80 dark:bg-white/80 p-2 rounded-xl my-8;
+    @apply my-8
+    p-2 rounded-xl
+    bg-slate-300
+    dark:text-violet-syntexia
+    bg-blue-syntexia/80
+    dark:bg-white/80
+    font-semibold text-sm sm:text-base xl:text-xl;
   }
   .body {
-    @apply font-normal text-sm sm:text-base xl:text-xl;
+    @apply text-slate-300 dark:text-white
+    font-normal text-sm sm:text-base xl:text-xl;
   }
   .list {
-    @apply font-light text-sm sm:text-base xl:text-lg flex flex-col gap-2;
+    @apply flex flex-col gap-2
+    font-light text-sm sm:text-base xl:text-lg;
   }
   .link {
     @apply capitalize;
   }
   .hide {
-    @apply opacity-0 blur-sm -translate-x-10 duration-1000;
+    @apply duration-1000
+    opacity-0 blur-sm -translate-x-10;
   }
   .show {
     @apply opacity-100 blur-none translate-x-0;

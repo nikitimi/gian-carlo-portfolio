@@ -6,7 +6,7 @@ const Header = () => {
     <header className="paper flex items-center relative">
       <Image
         draggable={false}
-        alt="Logo"
+        alt="Syntexia Logo"
         src="/SyntexiaLogo.svg"
         height={dimension}
         width={dimension}

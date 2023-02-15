@@ -22,6 +22,32 @@ const works: Array<{
 ]
 
 const Index = () => {
+  const techstack = [
+    "VS Code",
+    "Terminal",
+    "Github",
+    "Firebase",
+    "NodeJS",
+    "ReactJS",
+    "ThreeJS",
+    "NextJS",
+    "p5JS",
+    "Express",
+    "TailwindCSS",
+    "MUI",
+    "SCSS/SASS",
+    "Android Studio",
+  ]
+  const composers = [
+    "Ludwig van Beethoven",
+    "Niccolò Paganini",
+    "Franz Liszt",
+    "Frédéric François Chopin",
+    "Sergei Vasilyevich Rachmaninoff",
+    "Claude Debussy",
+    "Francisco Buencamino Sr.",
+    "Shaun Choo",
+  ]
   const dimension = 120
   const observer = useRef<IntersectionObserver | null>()
 
@@ -47,35 +73,33 @@ const Index = () => {
     <Background>
       <SEO title="Gian Carlo" description="Hey! welcome to my Portfolio~" />
       <Header />
-      <main className="grid gap-64 text-center paper py-64">
-        <section className="w-3/4 mx-auto hide">
-          <h1 className="title text-[#120a3d] dark:text-[#68da23]">
-            Gian Carlo Carranza
-          </h1>
-          <h6 className="subtitle text-[#120a3d] dark:text-[#68da23]">
-            Web Developer | Musician
-          </h6>
-          <Image
-            draggable={false}
-            className="rounded-full"
-            src="/avatar.jpg"
-            alt="avatar"
-            width={dimension}
-            height={dimension}
-            layout="intrinsic"
-          />
-          <h2 className="heading">
-            Hello there! My name is Gian Carlo, nice to meet you!
-          </h2>
-          <h6 className="body">
-            I&apos;m a passionate programmer most of the time, musician in free
-            time. I&apos;m aspiring to contribute to the IT industry and to my
-            future clients hence I&apos;m eagerly learning new web trends and
-            technology.
-          </h6>
+      <main className="grid gap-2 paper">
+        <section className="profile">
+          <div className="wrapper">
+            <h1 className="title">Gian Carlo Carranza</h1>
+            <h6 className="subtitle">Web Developer | Musician</h6>
+            <Image
+              draggable={false}
+              className="rounded-full"
+              src="/avatar.jpg"
+              alt="avatar"
+              width={dimension}
+              height={dimension}
+              layout="intrinsic"
+            />
+            <h2 className="heading">
+              Hello there! My name is Gian Carlo, nice to meet you!
+            </h2>
+            <h6 className="body">
+              I&apos;m a passionate programmer most of the time, musician in
+              free time. I&apos;m aspiring to contribute to the IT industry and
+              to my future clients hence I&apos;m eagerly learning new web
+              trends and technology.
+            </h6>
+          </div>
         </section>
-        <section className="w-3/4 mx-auto hide">
-          <div className="bg-white/30 dark:bg-black/30 border-2 rounded-xl border-green-black/20 p-10">
+        <section>
+          <div className="wrapper columns">
             <h2 className="heading">Web Developer</h2>
             <h6 className="subheading">Languages I speak:</h6>
             <h6 className="body">HTML, CSS, Javascript, PHP, Java</h6>
@@ -83,37 +107,21 @@ const Index = () => {
               Tools, Libraries, &amp; Frameworks I have used in the past:
             </h6>
             <ul className="list">
-              <li>VS Code</li>
-              <li>Terminal</li>
-              <li>Github</li>
-              <li>Firebase</li>
-              <li>Node JS</li>
-              <li>React JS</li>
-              <li>Next JS</li>
-              <li>Three JS</li>
-              <li>p5 JS</li>
-              <li>Express JS</li>
-              <li>Tailwind CSS</li>
-              <li>MUI</li>
-              <li>SCSS / SASS</li>
-              <li>Android Studio</li>
+              {techstack.map((value) => (
+                <li key={value}>{value}</li>
+              ))}
             </ul>
           </div>
         </section>
-        <section className="w-3/4 mx-auto hide">
-          <div className="bg-white/30 dark:bg-black/30 border-2 rounded-xl border-green-black/20 p-10">
+        <section className="wavy columns">
+          <div className="wrapper">
             <h2 className="heading">Musician</h2>
             <h6 className="body">Self taught and classical music enthusiast</h6>
             <h6 className="subheading">My go to composers:</h6>
             <ul className="list">
-              <li>Ludwig van Beethoven</li>
-              <li>Niccolò Paganini</li>
-              <li>Franz Liszt</li>
-              <li>Frédéric François Chopin</li>
-              <li>Sergei Vasilyevich Rachmaninoff</li>
-              <li>Claude Debussy</li>
-              <li>Francisco Buencamino Sr.</li>
-              <li>Shaun Choo</li>
+              {composers.map((value) => (
+                <li key={value}>{value}</li>
+              ))}
             </ul>
             <h6 className="subheading">My all-time favorite pieces</h6>
             <h6 className="body">
@@ -123,18 +131,20 @@ const Index = () => {
             </h6>
           </div>
         </section>
-        <section className="w-3/4 mx-auto hide">
-          <h2 className="heading">Recent Works:</h2>
-          <ul className="list">
-            {works.map(({ label, href }, I: number) => (
-              <li key={I} className="underline hover:animate-bounce">
-                <Link href={href} passHref>
-                  <Anchor>{label}</Anchor>
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <h2 className="subheading">Upgrade in Portfolio coming soon...</h2>
+        <section>
+          <div className="wrapper">
+            <h2 className="heading">Recent Works:</h2>
+            <ul className="list">
+              {works.map(({ label, href }, I: number) => (
+                <li key={I} className="underline hover:animate-bounce">
+                  <Link href={href} passHref>
+                    <Anchor>{label}</Anchor>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <h2 className="subheading">Upgrade in Portfolio coming soon...</h2>
+          </div>
         </section>
       </main>
       <Footer />

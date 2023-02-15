@@ -29,7 +29,7 @@ const Footer = () => {
         label: "linkedin",
       },
       {
-        href: "https://www.youtube.com/channel/UCtnF1a7ZVYnt-ybxErb1TDg",
+        href: "https://www.youtube.com/@realsyntexia",
         label: "youtube",
       },
     ],
