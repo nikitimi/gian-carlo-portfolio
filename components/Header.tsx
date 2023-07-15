@@ -3,7 +3,7 @@ import Image from "next/image"
 const Header = () => {
   const dimension = 80
   return (
-    <header className="paper flex items-center relative">
+    <header className="dark:bg-black bg-white dark:text-white duration-300 ease-in-out flex items-center relative">
       <Image
         draggable={false}
         alt="Syntexia Logo"

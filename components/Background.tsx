@@ -13,7 +13,7 @@ const Background = (props: any) => {
     "h-screen duration-300 ease-in-out min-h-screen duration-300 ease-in-out"
 
   return (
-    <div className={darkmode ? `dark paper ${baseStyle}` : baseStyle}>
+    <div className={darkmode ? `dark dark:bg-black bg-white dark:text-white duration-300 ease-in-out ${baseStyle}` : baseStyle}>
       {props.children}
       <button
         className="border-2 p-2 rounded-xl capitalize fixed bottom-10 right-10 text-white bg-[#120a3d] border-[#120a3d]"

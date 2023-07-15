@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  body {
+  text-slate-300 dark:text-white font-normal text-sm sm:text-base xl:text-xl {
     @apply font-sans text-xl leading-normal;
   }
   section {
@@ -12,29 +12,6 @@
 }
 
 @layer components {
-  .paper {
-    @apply dark:bg-black bg-white dark:text-white duration-300 ease-in-out;
-  }
-  .wrapper {
-    @apply max-w-3xl mx-auto px-4 duration-300;
-  }
-  .profile {
-    @apply relative
-    isolate
-    bg-slate-300
-    dark:bg-blue-syntexia
-
-    dark:after:from-violet-syntexia
-    dark:after:to-green-syntexia
-
-    after:bg-gradient-to-tr
-    after:from-violet-syntexia
-    after:to-violet-syntexia
-    after:absolute
-    after:inset-0
-    after:-skew-y-6
-    after:-z-20;
-  }
   .wavy {
     @apply bg-violet-syntexia;
     /* mask generated from https://css-generators.com/wavy-shapes */
@@ -48,49 +25,5 @@
         50% calc(100% - 20px) / 80px calc(51% - 20px) repeat-x;
     -webkit-mask: var(--mask);
     mask: var(--mask);
-  }
-  .title {
-    @apply m-4
-    text-slate-300
-    dark:text-green-syntexia
-    font-bold text-4xl sm:text-5xl xl:text-6xl;
-  }
-  .subtitle {
-    @apply mb-8
-    text-slate-300
-    dark:text-green-syntexia
-    font-bold text-lg sm:text-xl xl:text-3xl;
-  }
-  .heading {
-    @apply m-4
-    text-slate-300 dark:text-green-syntexia 
-    font-semibold text-base sm:text-lg xl:text-2xl;
-  }
-  .subheading {
-    @apply my-8
-    p-2 rounded-xl
-    bg-slate-300
-    dark:text-violet-syntexia
-    bg-blue-syntexia/80
-    dark:bg-white/80
-    font-semibold text-sm sm:text-base xl:text-xl;
-  }
-  .body {
-    @apply text-slate-300 dark:text-white
-    font-normal text-sm sm:text-base xl:text-xl;
-  }
-  .list {
-    @apply flex flex-col gap-2
-    font-light text-sm sm:text-base xl:text-lg;
-  }
-  .link {
-    @apply capitalize;
-  }
-  .hide {
-    @apply duration-1000
-    opacity-0 blur-sm -translate-x-10;
-  }
-  .show {
-    @apply opacity-100 blur-none translate-x-0;
   }
 }
