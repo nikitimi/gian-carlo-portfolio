@@ -8,7 +8,7 @@ interface UI {
 
 // Define the initial state using that type
 const initialState: UI = {
-    darkmode: false,
+    darkmode: true,
 }
 
 const checkIfTrue = (props: string) => (props === 'true' ? true : false)

@@ -51,7 +51,7 @@ const Main = () => {
     const DIMENSION = 120
 
     return (
-        <main className="grid gap-2 bg-white duration-300 ease-in-out dark:bg-black dark:text-white">
+        <main className="grid gap-10 bg-white pt-10 duration-300 ease-in-out dark:bg-black dark:text-white">
             <section className="relative isolate bg-slate-300 px-20 after:absolute after:inset-0 after:-z-20 after:-skew-y-6 after:bg-gradient-to-tr after:from-violet-syntexia after:to-violet-syntexia dark:bg-blue-syntexia dark:after:from-violet-syntexia dark:after:to-green-syntexia">
                 <div className="mx-auto max-w-3xl px-4 duration-300">
                     <h1 className="m-4 text-4xl font-bold text-slate-300 dark:text-green-syntexia sm:text-5xl xl:text-6xl">
