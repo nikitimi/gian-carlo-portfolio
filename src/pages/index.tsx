@@ -1,160 +1,286 @@
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import { Background, Header, SEO } from '~/components'
 
-const Main = () => {
-    const works: {
-        label: string
-        href: string
-    }[] = [
-        {
-            label: 'Foodie Blog',
-            href: 'https://foodie-blog.vercel.app/',
-        },
-        {
-            label: 'Questionnaire',
-            href: 'https://next-genetics.vercel.app/',
-        },
-        {
-            label: 'Resume',
-            href: 'https://gian-carlo.vercel.app/',
-        },
-    ]
-    const techstack = [
-        'VS Code',
-        'Terminal',
-        'Github',
-        'Firebase',
-        'NodeJS',
-        'ReactJS',
-        'ThreeJS',
-        'NextJS',
-        'p5JS',
-        'Express',
-        'TailwindCSS',
-        'MUI',
-        'SCSS/SASS',
-        'Android Studio',
-    ]
-    const composers = [
-        'Ludwig van Beethoven',
-        'Niccolò Paganini',
-        'Franz Liszt',
-        'Frédéric François Chopin',
-        'Sergei Vasilyevich Rachmaninoff',
-        'Claude Debussy',
-        'Francisco Buencamino Sr.',
-        'Shaun Choo',
-    ]
-    const DIMENSION = 120
+type SectionType = {
+    name: string
+    items: {
+        title: string
+        value: { name: string; src?: string }[]
+    }[]
+    wavy?: boolean
+}
+const DIMENSION = 120
+
+const Section = (props: SectionType) => {
+    const buttonRef = useRef<HTMLButtonElement | null>(null)
+    const { name, items, wavy } = props
+
+    const handleMouseEnter =
+        (name: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
+            e.preventDefault()
+            const button: HTMLButtonElement = e.currentTarget
+            const span = Object.assign(document.createElement('span'), {
+                className:
+                    'absolute bg-black/90 text-[.5rem] inset-0 flex items-center justify-center rounded-full text-white dark:text-green-syntexia',
+                textContent: name,
+            })
+
+            button.setAttribute('aria-expanded', 'true')
+            button.appendChild(span)
+        }
+
+    function handleMouseLeave(e: React.MouseEvent<HTMLButtonElement>) {
+        e.preventDefault()
+        const button: HTMLButtonElement = e.currentTarget
+        const spanElements = button.querySelectorAll('span')
+
+        button.removeAttribute('aria-expanded')
+        spanElements.forEach((span) => span.remove())
+    }
+
+    function renderList(value: SectionType['items'][number]['value']) {
+        return value
+            .sort((a, b) => (a.name < b.name ? -1 : 1))
+            .map(({ src, name }, index) => {
+                const srcExistStyle = `${
+                    wavy ? 'bg-slate-300' : ''
+                } w-fit overflow-hidden rounded-full hover:scale-105 dark:bg-white/80`
+                const otherStyle = 'w-fit'
+                return (
+                    <li
+                        className={src ? srcExistStyle : otherStyle}
+                        key={index}
+                    >
+                        {src ? (
+                            <button
+                                ref={buttonRef}
+                                onMouseEnter={handleMouseEnter(name)}
+                                onMouseLeave={handleMouseLeave}
+                                className="relative h-12 w-12 p-2"
+                            >
+                                <Image
+                                    src={src}
+                                    alt={name}
+                                    width={DIMENSION * 0.5}
+                                    height={DIMENSION * 0.5}
+                                />
+                            </button>
+                        ) : (
+                            <p className="text-slate-300 dark:text-white/80">
+                                {name}
+                            </p>
+                        )}
+                    </li>
+                )
+            })
+    }
+
+    function renderItems() {
+        return items.map(({ title, value }) => {
+            const srcExist = Object.keys(value[0]).includes('src')
+            return (
+                <div key={title}>
+                    <h6 className="my-8 rounded-xl bg-slate-300 bg-blue-syntexia/80 p-4 font-semibold shadow-sm dark:bg-white/80 dark:text-violet-syntexia">
+                        {`${title}: `}
+                    </h6>
+                    <ul
+                        className={`${
+                            srcExist ? 'grid-cols-10' : ''
+                        } grid gap-2`}
+                    >
+                        {renderList(value)}
+                    </ul>
+                </div>
+            )
+        })
+    }
 
     return (
-        <main className="grid gap-10 bg-white pt-10 duration-300 ease-in-out dark:bg-black dark:text-white">
-            <section className="relative isolate bg-slate-300 px-20 after:absolute after:inset-0 after:-z-20 after:-skew-y-6 after:bg-gradient-to-tr after:from-violet-syntexia after:to-violet-syntexia dark:bg-blue-syntexia dark:after:from-violet-syntexia dark:after:to-green-syntexia">
-                <div className="mx-auto max-w-3xl px-4 duration-300">
-                    <h1 className="m-4 text-4xl font-bold text-slate-300 dark:text-green-syntexia sm:text-5xl xl:text-6xl">
-                        Gian Carlo Carranza
-                    </h1>
-                    <h6 className="mb-8 text-lg font-bold text-slate-300 dark:text-green-syntexia sm:text-xl xl:text-3xl">
-                        Web Developer | Musician
-                    </h6>
-                    <div className="rounded-full">
-                        <Image
-                            draggable={false}
-                            // className="rounded-full"
-                            src="/avatar.jpg"
-                            alt=""
-                            width={DIMENSION}
-                            height={DIMENSION}
-                            layout="intrinsic"
-                        />
+        <section className="">
+            <div className={`${wavy ? 'wavy' : ''} py-20`}>
+                <div className="mx-auto max-w-3xl p-4">
+                    <h2
+                        className={`${
+                            wavy ? 'text-slate-300' : 'text-black'
+                        } m-4 text-3xl font-bold dark:text-green-syntexia`}
+                    >
+                        {name}
+                    </h2>
+                    {renderItems()}
+                </div>
+            </div>
+        </section>
+    )
+}
+
+const Main = () => {
+    const languages = [
+        {
+            name: 'html',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
+        },
+        {
+            name: 'css',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
+        },
+        {
+            name: 'javascript',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+        },
+        {
+            name: 'typescript',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+        },
+        {
+            name: 'php',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
+        },
+        {
+            name: 'python',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+        },
+    ]
+    const techstacks = [
+        {
+            name: 'redux',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg',
+        },
+        {
+            name: 'vscode',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',
+        },
+        {
+            name: 'visualstudio',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg',
+        },
+        {
+            name: 'github',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
+        },
+        {
+            name: 'firebase',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg',
+        },
+        {
+            name: 'nodejs',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
+        },
+        {
+            name: 'reactjs',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
+        },
+        {
+            name: 'threejs',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg',
+        },
+        {
+            name: 'nextjs',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
+        },
+        {
+            name: 'express',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
+        },
+        {
+            name: 'tailwindcss',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg',
+        },
+        {
+            name: 'scss/sass',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg',
+        },
+        {
+            name: 'android studio',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg',
+        },
+        // 'MUI',
+        // 'p5JS',
+    ]
+    const composers = [
+        { name: 'Ludwig van Beethoven' },
+        { name: 'Niccolò Paganini' },
+        { name: 'Franz Liszt' },
+        { name: 'Frédéric François Chopin' },
+        { name: 'Sergei Vasilyevich Rachmaninoff' },
+        { name: 'Claude Debussy' },
+        { name: 'Francisco Buencamino Sr.' },
+        { name: 'Shaun Choo' },
+    ]
+    const pieces = [
+        { name: 'Ballade No 1 in G Minor Op 23' },
+        { name: 'Debussy - Reverie' },
+        { name: 'Transcendental Etude No.8' },
+        { name: 'Rachmaninoff/Kreisler - Liebesleid' },
+        { name: 'Caprice No. 24 in A minor' },
+    ]
+    const web: SectionType = {
+        name: 'Web Developer',
+        items: [
+            {
+                title: 'Languages I speak',
+                value: languages,
+            },
+            {
+                title: 'Tools, Libraries, & Frameworks I have used in the past',
+                value: techstacks,
+            },
+        ],
+    }
+    const musician: SectionType = {
+        wavy: true,
+        name: 'Musician',
+        items: [
+            {
+                title: 'My go to composers',
+                value: composers,
+            },
+            {
+                title: 'My all-time favorite pieces',
+                value: pieces,
+            },
+        ],
+    }
+
+    return (
+        <main>
+            <div className="grid bg-white dark:bg-black dark:text-white">
+                <section className="h-screen">
+                    <div className="relative isolate grid translate-y-1/2 grid-cols-2 bg-slate-300 py-20 after:absolute after:inset-0 after:-z-20 after:-skew-y-6 after:bg-gradient-to-tr after:from-violet-syntexia after:to-violet-syntexia dark:bg-blue-syntexia dark:after:from-violet-syntexia dark:after:to-green-syntexia">
+                        <div className="flex flex-col gap-6 self-end p-8">
+                            <h1 className="text-5xl font-bold text-slate-300 dark:text-green-syntexia">
+                                Full-Stack Developer
+                            </h1>
+                            <p className="text-slate-300 dark:text-white">
+                                Hello there! My name is
+                                <span className="font-semibold text-slate-300 dark:text-green-syntexia">
+                                    {` Gian Carlo Carranza, `}
+                                </span>
+                                A passionate Developer based in the Philippines.
+                                📍
+                            </p>
+                        </div>
+                        <div className=" self-center justify-self-center overflow-hidden rounded-full border-4 border-black">
+                            <Image
+                                draggable={false}
+                                // className="w-full"
+                                src="/avatar.jpg"
+                                alt=""
+                                width={DIMENSION * 2}
+                                height={DIMENSION * 2}
+                            />
+                        </div>
                     </div>
-                    <h2 className="m-4 text-base font-semibold text-slate-300 dark:text-green-syntexia sm:text-lg xl:text-2xl">
-                        Hello there! My name is Gian Carlo, nice to meet you!
-                    </h2>
-                    <h6 className="text-sm font-normal text-slate-300 dark:text-white sm:text-base xl:text-xl">
-                        I&apos;m a passionate programmer most of the time,
-                        musician in free time. I&apos;m aspiring to contribute
-                        to the IT industry and to my future clients hence
-                        I&apos;m eagerly learning new web trends and technology.
-                    </h6>
-                </div>
-            </section>
-            <section className="px-20">
-                <div className="mx-auto max-w-3xl px-4 duration-300">
-                    <h2 className="m-4 text-base font-semibold  text-slate-300 dark:text-green-syntexia sm:text-lg xl:text-2xl">
-                        Web Developer
-                    </h2>
-                    <h6 className="my-8 rounded-xl bg-slate-300 bg-blue-syntexia/80 p-2 text-sm font-semibold dark:bg-white/80 dark:text-violet-syntexia sm:text-base xl:text-xl">
-                        Languages I speak:
-                    </h6>
-                    <h6 className="text-sm font-normal text-slate-300 dark:text-white sm:text-base xl:text-xl">
-                        HTML, CSS, Javascript, PHP, Java
-                    </h6>
-                    <h6 className="my-8 rounded-xl bg-slate-300 bg-blue-syntexia/80 p-2 text-sm font-semibold dark:bg-white/80 dark:text-violet-syntexia sm:text-base xl:text-xl">
-                        Tools, Libraries, &amp; Frameworks I have used in the
-                        past:
-                    </h6>
-                    <ul className="flex flex-col gap-2 text-sm font-light sm:text-base xl:text-lg">
-                        {techstack.map((value) => (
-                            <li key={value}>{value}</li>
-                        ))}
-                    </ul>
-                </div>
-            </section>
-            <section className="wavy px-20">
-                <div className="mx-auto max-w-3xl px-4 duration-300">
-                    <h2 className="m-4 text-base font-semibold  text-slate-300 dark:text-green-syntexia sm:text-lg xl:text-2xl">
-                        Musician
-                    </h2>
-                    <h6 className="text-sm font-normal text-slate-300 dark:text-white sm:text-base xl:text-xl">
-                        Self taught and classical music enthusiast
-                    </h6>
-                    <h6 className="my-8 rounded-xl bg-slate-300 bg-blue-syntexia/80 p-2 text-sm font-semibold dark:bg-white/80 dark:text-violet-syntexia sm:text-base xl:text-xl">
-                        My go to composers:
-                    </h6>
-                    <ul className="flex flex-col gap-2 text-sm font-light sm:text-base xl:text-lg">
-                        {composers.map((value) => (
-                            <li key={value}>{value}</li>
-                        ))}
-                    </ul>
-                    <h6 className="my-8 rounded-xl bg-slate-300 bg-blue-syntexia/80 p-2 text-sm font-semibold dark:bg-white/80 dark:text-violet-syntexia sm:text-base xl:text-xl">
-                        My all-time favorite pieces
-                    </h6>
-                    <h6 className="text-sm font-normal text-slate-300 dark:text-white sm:text-base xl:text-xl">
-                        Ballade No 1 in G Minor Op 23, Debussy - Reverie,
-                        Transcendental Etude No.8, Rachmaninoff/Kreisler -
-                        Liebesleid, Caprice No. 24 in A minor
-                    </h6>
-                </div>
-            </section>
-            <section className="px-20">
-                <div className="mx-auto max-w-3xl px-4 duration-300">
-                    <h2 className="m-4 text-base font-semibold  text-slate-300 dark:text-green-syntexia sm:text-lg xl:text-2xl">
-                        Recent Works:
-                    </h2>
-                    <ul className="flex flex-col gap-2 text-sm font-light sm:text-base xl:text-lg">
-                        {works.map(({ label, href }, I: number) => (
-                            <li
-                                key={I}
-                                className="underline hover:animate-bounce"
-                            >
-                                <Link href={href} passHref>
-                                    {label}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                    <h2 className="my-8 rounded-xl bg-slate-300 bg-blue-syntexia/80 p-2 text-sm font-semibold dark:bg-white/80 dark:text-violet-syntexia sm:text-base xl:text-xl">
-                        Upgrade in Portfolio coming soon...
-                    </h2>
-                </div>
-            </section>
+                </section>
+                <Section {...web} />
+                {/* <Section {...web} wavy /> */}
+                <Section {...musician} />
+            </div>
         </main>
     )
 }
+
 const Index = () => {
     const observer = useRef<IntersectionObserver | null>()
 
