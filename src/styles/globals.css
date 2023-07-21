@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+    :root {
+        --accent: '#120a3d';
+    }
     body {
         @apply font-sans text-xl leading-normal;
     }
@@ -30,5 +33,17 @@
                 50% calc(100% - 20px) / 80px calc(51% - 20px) repeat-x;
         -webkit-mask: var(--mask);
         mask: var(--mask);
+    }
+}
+
+@layer utilities {
+    .delay-1 {
+        animation-delay: 200ms;
+    }
+    .delay-2 {
+        animation-delay: 400ms;
+    }
+    .delay-3 {
+        animation-delay: 600ms;
     }
 }

@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
-import { useEffect, useRef } from 'react'
-import { Background, Header, SEO } from '~/components'
+import { useEffect, useRef, useState } from 'react'
+import { Background, Header, SEO, Loading } from '~/components'
 
 type SectionType = {
     name: string
@@ -87,7 +87,7 @@ const Section = (props: SectionType) => {
                     </h6>
                     <ul
                         className={`${
-                            srcExist ? 'grid-cols-10' : ''
+                            srcExist ? 'grid-cols-6 lg:grid-cols-10' : ''
                         } grid gap-2`}
                     >
                         {renderList(value)}
@@ -245,26 +245,37 @@ const Main = () => {
 
     return (
         <main>
-            <div className="grid bg-white dark:bg-black dark:text-white">
+            <div className="grid bg-white duration-300 ease-in-out dark:bg-black dark:text-white">
+                <div className="overflow-hidden rounded-full bg-green-400">
+                    <section className="fixed inset-0 translate-y-1/3 scale-125 select-none ease-in-out md:translate-y-1">
+                        <Image
+                            draggable={false}
+                            src="/stars/2.gif"
+                            alt=""
+                            width={120}
+                            height={120}
+                            className="w-full animate-spin-forever opacity-0 dark:opacity-100 md:h-full"
+                        />
+                    </section>
+                </div>
                 <section className="h-screen">
-                    <div className="relative isolate grid translate-y-1/2 grid-cols-2 bg-slate-300 py-20 after:absolute after:inset-0 after:-z-20 after:-skew-y-6 after:bg-gradient-to-tr after:from-violet-syntexia after:to-violet-syntexia dark:bg-blue-syntexia dark:after:from-violet-syntexia dark:after:to-green-syntexia">
+                    <div className="relative isolate grid translate-y-1/2 grid-cols-2 bg-slate-300 py-20 duration-300 ease-in-out after:absolute after:inset-0 after:-z-20 after:-skew-y-6 after:bg-gradient-to-tr after:from-violet-syntexia after:to-violet-syntexia dark:bg-blue-syntexia dark:after:from-violet-syntexia dark:after:to-green-syntexia">
                         <div className="flex flex-col gap-6 self-end p-8">
-                            <h1 className="text-5xl font-bold text-slate-300 dark:text-green-syntexia">
+                            <h1 className="w-max text-2xl font-bold text-slate-300 duration-300 ease-in-out dark:text-green-syntexia sm:text-3xl lg:text-5xl">
                                 Full-Stack Developer
                             </h1>
-                            <p className="text-slate-300 dark:text-white">
+                            <p className="text-sm text-slate-300 dark:text-white sm:text-base">
                                 Hello there! My name is
-                                <span className="font-semibold text-slate-300 dark:text-green-syntexia">
+                                <span className="text-sm font-semibold text-slate-300 duration-300 ease-in-out dark:text-green-syntexia sm:text-base">
                                     {` Gian Carlo Carranza, `}
                                 </span>
                                 A passionate Developer based in the Philippines.
                                 📍
                             </p>
                         </div>
-                        <div className=" self-center justify-self-center overflow-hidden rounded-full border-4 border-black">
+                        <div className="relative self-center justify-self-center overflow-hidden rounded-full border-4 border-black">
                             <Image
                                 draggable={false}
-                                // className="w-full"
                                 src="/avatar.jpg"
                                 alt=""
                                 width={DIMENSION * 2}
@@ -275,7 +286,8 @@ const Main = () => {
                 </section>
                 <Section {...web} />
                 {/* <Section {...web} wavy /> */}
-                <Section {...musician} />
+                <Loading />
+                {/* <Section {...musician} /> */}
             </div>
         </main>
     )
@@ -283,6 +295,7 @@ const Main = () => {
 
 const Index = () => {
     const observer = useRef<IntersectionObserver | null>()
+    const [num] = useState(1)
 
     const DynamicFooter = dynamic(() => import('~/components/Footer'), {
         loading: () => <p>Loading</p>,
@@ -323,7 +336,7 @@ const Index = () => {
         return () => {
             unsub = false
         }
-    }, [])
+    }, [num])
 
     return (
         <Background>

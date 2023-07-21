@@ -14,12 +14,18 @@ module.exports = {
                     '0%': { transform: 'rotate(0deg)' },
                     '100%': { transform: 'rotate(360deg)' },
                 },
+                'color-spin': {
+                    '0%, 100%': { backgroundColor: 'white' },
+                    '25%': { backgroundColor: '#999' },
+                },
+                loading: {
+                    '0%': { opacity: 0 },
+                },
             },
             animation: {
-                'spin-forever-one': 'spin-forever 60s infinite linear',
-                'spin-forever-two': 'spin-forever 121s infinite linear',
-                'spin-forever-three': 'spin-forever 82s infinite linear',
-                'spin-forever-four': 'spin-forever 93s infinite linear',
+                'spin-forever': 'spin-forever 600s infinite linear',
+                'color-spin': 'color-spin 1s linear',
+                loading: 'loading infinite 900ms',
             },
         },
     },
