@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { Background, Header, Loading, SEO } from '~/components'
-import { SectionType, web } from './_index'
+import { SectionType, web } from '~/lib/_index'
 
 const DIMENSION = 120
 
