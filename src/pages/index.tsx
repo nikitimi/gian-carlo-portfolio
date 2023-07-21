@@ -275,6 +275,7 @@ const Main = () => {
                         </div>
                         <div className="relative self-center justify-self-center overflow-hidden rounded-full border-4 border-black">
                             <Image
+                                priority
                                 draggable={false}
                                 src="/avatar.jpg"
                                 alt=""
