@@ -14,7 +14,7 @@ const Header = () => {
         const ariaChecked = input.getAttribute(ariaCheckedName)
         const span = input.parentElement?.lastElementChild
 
-        dispatch(setTheme(JSON.stringify(!darkmode)))
+        dispatch(setTheme(`${!darkmode}`))
         if (ariaChecked === 'true') {
             span?.setAttribute(ariaCheckedName, 'false')
             return input.setAttribute(ariaCheckedName, 'false')
@@ -39,12 +39,12 @@ const Header = () => {
                 <div className="inline-block h-8 w-8">
                     <input
                         type="checkbox"
-                        aria-checked="true"
+                        aria-checked={darkmode}
                         className="absolute inset-0 z-10 rounded-xl border-2 border-[#120a3d] bg-[#120a3d] p-2 capitalize text-white opacity-0"
                         onClick={handleThemeButton}
                     />
                     <span
-                        aria-checked="true"
+                        aria-checked={darkmode}
                         className="absolute inset-0 -z-10 w-1/3 cursor-pointer rounded-full bg-slate-300 shadow-sm duration-300 ease-in-out before:absolute before:inset-y-0 before:z-10 before:w-8 before:rounded-full before:bg-white before:duration-300 before:ease-in-out aria-checked:bg-green-syntexia aria-checked:before:translate-x-6 aria-checked:before:animate-color-spin"
                     />
                 </div>

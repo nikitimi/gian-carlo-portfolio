@@ -12,7 +12,6 @@ const initialState: UI = {
 }
 
 const darkmodeName = 'darkmode'
-const checkIfTrue = (props: string) => (props === 'true' ? true : false)
 
 export const ui = createSlice({
     name: 'ui',
@@ -21,13 +20,15 @@ export const ui = createSlice({
     reducers: {
         // Use the PayloadAction type to declare the contents of `action.payload`
         setTheme: (state, action: PayloadAction<string>) => {
+            console.log(action.payload)
+            state.darkmode = JSON.parse(action.payload)
             localStorage.setItem(darkmodeName, action.payload)
-            state.darkmode = checkIfTrue(action.payload)
         },
         getUI: (state) => {
-            const darkmodeState = localStorage.getItem(darkmodeName)
-            if (darkmodeState) state.darkmode = JSON.parse(darkmodeState)
-            else localStorage.setItem(darkmodeName, `${state.darkmode}`)
+            const darkmodeContainer = localStorage.getItem(darkmodeName)
+            if (darkmodeContainer)
+                state.darkmode = JSON.parse(darkmodeContainer)
+            else localStorage.setItem(darkmodeName, 'true')
         },
     },
 })
