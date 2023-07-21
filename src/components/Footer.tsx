@@ -55,6 +55,7 @@ const Footer = () => {
                                 <div className="h-full w-full rounded-full border bg-white text-white">
                                     <Image
                                         {...rest}
+                                        alt=""
                                         width={DIMENSION}
                                         height={DIMENSION}
                                     />

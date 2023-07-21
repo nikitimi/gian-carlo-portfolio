@@ -1,13 +1,13 @@
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '~/redux/hooks'
-import { getUI, setTheme } from '~/redux/reducers/uiReducer'
+import { setTheme } from '~/redux/reducers/uiReducer'
 
 const Background = (props: any) => {
     const dispatch = useAppDispatch()
     const darkmode = useAppSelector((state) => state.ui.darkmode)
 
     useEffect(() => {
-        dispatch(getUI('darkmode'))
+        dispatch(setTheme('darkmode'))
     }, [dispatch])
     const baseStyle = 'h-full w-full'
 

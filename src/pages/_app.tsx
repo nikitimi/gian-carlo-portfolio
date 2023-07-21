@@ -18,7 +18,8 @@ const InitApp = ({ Component, pageProps }: AppProps) => {
     const dispatch = useAppDispatch()
     useEffect(() => {
         dispatch(getUI())
-    }, [])
+    }, [dispatch])
+
     return <Component {...pageProps} />
 }
 
