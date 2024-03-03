@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import { useAppDispatch, useAppSelector } from '~/redux/hooks'
 import { setTheme } from '~/redux/reducers/uiReducer'

@@ -1,3 +1,5 @@
+'use client'
+
 function randMinMax(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min
 }
@@ -148,7 +150,7 @@ const Stars = () => {
     return (
         <div className="fixed inset-0 h-screen scale-150 select-none bg-black text-transparent text-white ">
             .
-            <div className="relative translate-y-64 translate-x-1/2">
+            <div className="relative translate-x-1/2 translate-y-64">
                 <MiniStars className={randomClassNames()} />
                 <MiniStars className={randomClassNames()} />
                 <MiniStars className={randomClassNames()} />

@@ -1,8 +1,11 @@
+'use client'
+
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
-import { Background, Header, Loading, SEO } from '~/components'
-import { SectionType, web } from '~/lib/_index'
+import { Background, Header, Loading } from '~/components'
+import { SectionType, web } from '~/app/lib/_index'
+import '~/app/globals.css'
 
 const DIMENSION = 120
 
@@ -75,7 +78,7 @@ const Section = (props: SectionType) => {
             const srcExist = Object.keys(value[0]).includes('src')
             return (
                 <div key={title}>
-                    <h6 className="my-8 rounded-xl bg-slate-300 bg-blue-syntexia/80 p-4 font-semibold shadow-sm dark:bg-white/80 dark:text-violet-syntexia">
+                    <h6 className="my-8 rounded-xl bg-blue-syntexia/80 bg-slate-300 p-4 font-semibold shadow-sm dark:bg-white/80 dark:text-violet-syntexia">
                         {`${title}: `}
                     </h6>
                     <ul
@@ -207,10 +210,6 @@ const Index = () => {
 
     return (
         <Background>
-            <SEO
-                title="Gian Carlo"
-                description="Hey! welcome to my Portfolio~"
-            />
             <Header />
             <Main />
             <DynamicFooter />

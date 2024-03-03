@@ -1,3 +1,5 @@
+'use client'
+
 import { useAppSelector } from '~/redux/hooks'
 
 const Background = (props: any) => {

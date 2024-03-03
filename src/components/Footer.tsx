@@ -1,6 +1,7 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
-import { type ReactNode } from 'react'
 
 type SocialDetailType = {
     href: string
@@ -13,12 +14,12 @@ const Footer = () => {
     const DIMENSION = 40
     const social: SocialDetailType[] = [
         {
-            href: 'https://www.facebook.com/weepingpianist',
+            href: 'https://www.facebook.com/SyntexiaNikiTimi',
             src: '/facebook.png',
             alt: 'facebook',
         },
         {
-            href: 'https://github.com/Resyntech',
+            href: 'https://github.com/NikiTimi',
             src: '/github.png',
             alt: 'github',
         },
