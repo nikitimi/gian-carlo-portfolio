@@ -9,14 +9,6 @@ export type SectionType = {
 
 export const languages = [
     {
-        name: 'html',
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
-    },
-    {
-        name: 'css',
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
-    },
-    {
         name: 'javascript',
         src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
     },
@@ -34,6 +26,14 @@ export const languages = [
     },
 ]
 export const techstacks = [
+    {
+        name: 'html',
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
+    },
+    {
+        name: 'css',
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
+    },
     {
         name: 'redux',
         src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg',
