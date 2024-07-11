@@ -118,6 +118,7 @@ const Main = () => {
                 <div className="overflow-hidden rounded-full bg-green-400">
                     <section className="fixed inset-0 translate-y-1/3 scale-125 select-none ease-in-out md:translate-y-1">
                         <Image
+                            unoptimized
                             draggable={false}
                             priority
                             src="/stars/2.gif"

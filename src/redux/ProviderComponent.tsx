@@ -1,6 +1,6 @@
 'use client'
 
-import { Analytics } from '@vercel/analytics/react'
+// import { Analytics } from '@vercel/analytics/react'
 // import { AppProps } from 'next/app'
 import { useEffect } from 'react'
 import { Provider } from 'react-redux'
@@ -16,7 +16,7 @@ function ProviderComponent(props: RootLayoutProps) {
     return (
         <Provider store={store}>
             <App {...props} />
-            <Analytics />
+            {/* <Analytics /> */}
         </Provider>
     )
 }
