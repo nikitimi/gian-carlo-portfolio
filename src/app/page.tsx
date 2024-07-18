@@ -4,8 +4,6 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { Background, Header } from '~/components'
-import { type SectionType, web, musician } from '~/lib/_index'
-import { type DevIconType, processDevIconToUrl } from '../lib/devIcons'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import {
     Color,
@@ -32,7 +30,7 @@ const Main = () => {
         : new Color(0xf2f2f2)
 
     const CustomOrbitControl = () => {
-        const { camera, gl, scene } = useThree()
+        const { camera, gl } = useThree()
         const controls = new OrbitControls(camera, gl.domElement)
         // useHelper(lightRef, DirectionalLightHelper, 1, 'red')
 
@@ -55,6 +53,7 @@ const Main = () => {
                 camera.position.y,
                 camera.position.z
             )
+            // console.log(scene)
         })
 
         return <></>
@@ -151,8 +150,7 @@ const Main = () => {
                             <Image
                                 priority
                                 draggable={false}
-                                src="/"
-                                // src="/avatar.jpg"
+                                src="/avatar.jpg"
                                 alt=""
                                 width={DIMENSION * 2}
                                 height={DIMENSION * 2}
