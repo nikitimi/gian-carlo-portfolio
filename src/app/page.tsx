@@ -19,9 +19,10 @@ const Section = (props: SectionType) => {
         const buttonName =
             (button.childNodes[0] as HTMLImageElement).getAttribute('alt') ??
             'imageAltName'
+        const spanClasses =
+            'absolute bg-black/90 text-[.5rem] inset-0 flex items-center justify-center rounded-full text-white dark:text-green-syntexia'
         const span = Object.assign(document.createElement('span'), {
-            className:
-                'absolute bg-black/90 text-[.5rem] inset-0 flex items-center justify-center rounded-full text-white dark:text-green-syntexia',
+            className: spanClasses,
             textContent: buttonName,
         })
 
