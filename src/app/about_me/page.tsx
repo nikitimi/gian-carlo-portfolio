@@ -23,7 +23,11 @@ const AboutMe = () => {
     return (
         <div>
             {values.map((meAsA) => {
-                return <button onClick={handleClick}>{meAsA}</button>
+                return (
+                    <button key={meAsA} onClick={handleClick}>
+                        {meAsA}
+                    </button>
+                )
             })}
             <Section {...state} />
         </div>
