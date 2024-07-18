@@ -4,8 +4,8 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { Background, Header, Loading } from '~/components'
-import { SectionType, web, musician } from '~/app/lib/_index'
-import { DevIconType, processDevIconToUrl } from './lib/devIcons'
+import { type SectionType, web, musician } from '~/app/lib/_index'
+import { type DevIconType, processDevIconToUrl } from './lib/devIcons'
 import '~/app/globals.css'
 
 const DIMENSION = 120
