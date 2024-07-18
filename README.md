@@ -1,16 +1,23 @@
-# Future Upgrades:
+# Gian Carlo Dev
 
 ---
 
+[upgrades_url]: https://github.com/nikitimi/gian-carlo-portfolio?tab=readme-ov-file#future-upgrades
 [home_url]: https://github.com/nikitimi/gian-carlo-portfolio?tab=readme-ov-file#home
 [projects_url]: https://github.com/nikitimi/gian-carlo-portfolio?tab=readme-ov-file#projects
 [about_me_url]: https://github.com/nikitimi/gian-carlo-portfolio?tab=readme-ov-file#about-me
+[issues_url]: https://github.com/nikitimi/gian-carlo-portfolio?tab=readme-ov-file#issues
 
-| Table of Contents        |
-| :----------------------- |
-| [Home][home_url]         |
-| [Projects][projects_url] |
-| [About Me][about_me_url] |
+| <h1>Table of Contents </h1>              |                          |
+| :--------------------------------------- | :----------------------- |
+| <h3>[Future Upgrades][upgrades_url]</h3> | [Home][home_url]         |
+|                                          | [Projects][projects_url] |
+|                                          | [About Me][about_me_url] |
+| <h3>[Issues][issues_url]</h3>            |                          |
+
+---
+
+# Future Upgrades:
 
 ---
 
@@ -37,3 +44,13 @@
 -   Categorized what the Visitors want to know about me > `Education`, `Love Life`, `Extracurricular`, `Religious Views`, `Family`, `Passion Activities`, `Achievements`
 -   Story telling with the use of mouse `Scroll` or `KeyRelease`
 -   Contact Me
+
+---
+
+# Issues:
+
+---
+
+-   3D Objects rendered in Canvas rerenders when the Dom size changes
+
+---

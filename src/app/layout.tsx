@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import ProviderComponent from '~/redux/ProviderComponent'
+import '~/app/globals.css'
 
 type RootLayoutProps = { children: React.ReactNode }
 
