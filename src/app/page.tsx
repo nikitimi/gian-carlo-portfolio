@@ -4,15 +4,15 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { Background, Header, Loading } from '~/components'
-import { type SectionType, web, musician } from '~/app/lib/_index'
-import { type DevIconType, processDevIconToUrl } from './lib/devIcons'
+import { type SectionType, web, musician } from '~/lib/_index'
+import { type DevIconType, processDevIconToUrl } from '../lib/devIcons'
 import '~/app/globals.css'
 
 const DIMENSION = 120
 
 const Section = (props: SectionType) => {
     const buttonRef = useRef<HTMLButtonElement | null>(null)
-    const { sectionTitle, sectionItems, wavy } = props
+    const { sectionTitle, sectionItems, isWavy } = props
 
     function handleMouseEnter(e: React.MouseEvent<HTMLButtonElement>) {
         const button: HTMLButtonElement = e.currentTarget
@@ -39,11 +39,11 @@ const Section = (props: SectionType) => {
 
     return (
         <section className="">
-            <div className={`${wavy ? 'wavy' : ''} py-20`}>
+            <div className={`${isWavy ? 'wavy' : ''} py-20`}>
                 <div className="mx-auto max-w-3xl p-4">
                     <h2
                         className={`${
-                            wavy ? 'text-slate-300' : 'text-black'
+                            isWavy ? 'text-slate-300' : 'text-black'
                         } m-4 text-3xl font-bold dark:text-green-syntexia`}
                     >
                         {sectionTitle}
@@ -68,7 +68,7 @@ const Section = (props: SectionType) => {
                                         )
                                         .map((props, index: number) => {
                                             const isIconStyle = `${
-                                                wavy ? 'bg-slate-300' : ''
+                                                isWavy ? 'bg-slate-300' : ''
                                             } w-fit overflow-hidden rounded-full hover:scale-105 dark:bg-white/80`
                                             const otherStyle = 'w-fit'
                                             const iconUrl = processDevIconToUrl(
