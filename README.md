@@ -7,6 +7,7 @@
 [projects_url]: https://github.com/nikitimi/gian-carlo-portfolio?tab=readme-ov-file#projects
 [about_me_url]: https://github.com/nikitimi/gian-carlo-portfolio?tab=readme-ov-file#about-me
 [issues_url]: https://github.com/nikitimi/gian-carlo-portfolio?tab=readme-ov-file#issues
+[fix_url]: https://github.com/nikitimi/gian-carlo-portfolio?tab=readme-ov-file#fix
 
 | <h1>Table of Contents </h1>              |                          |
 | :--------------------------------------- | :----------------------- |
@@ -14,6 +15,7 @@
 |                                          | [Projects][projects_url] |
 |                                          | [About Me][about_me_url] |
 | <h3>[Issues][issues_url]</h3>            |                          |
+| <h3>[Fix][fix_url]</h3>                  |                          |
 
 ---
 
@@ -51,6 +53,16 @@
 
 ---
 
--   3D Objects rendered in Canvas rerenders when the Dom size changes
+-   [#1][fix_url] 3D Objects rendered in Canvas rerenders when the Dom size changes
+
+---
+
+# Fix
+
+###### Possible way to fix
+
+---
+
+-   [Issue #1][issues_url] Move the `GalaxyThree.tsx` state inside redux to retain animation rendering despite changing route
 
 ---

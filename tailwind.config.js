@@ -1,3 +1,5 @@
+import { BLACK, BLUE, GREEN, VIOLET, WHITE } from './src/utils/colors'
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     darkMode: 'class',
@@ -9,9 +11,11 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                'green-syntexia': '#68da23',
-                'violet-syntexia': '#412854',
-                'blue-syntexia': '#120a3d',
+                'black-syntexia': BLACK,
+                'blue-syntexia': BLUE,
+                'green-syntexia': GREEN,
+                'violet-syntexia': VIOLET,
+                'white-syntexia': WHITE,
             },
             keyframes: {
                 'spin-forever': {
@@ -19,7 +23,7 @@ module.exports = {
                     '100%': { transform: 'rotate(360deg)' },
                 },
                 'color-spin': {
-                    '0%, 100%': { backgroundColor: 'white' },
+                    '0%, 100%': { backgroundColor: WHITE },
                     '25%': { backgroundColor: '#999' },
                 },
                 loading: {

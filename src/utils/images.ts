@@ -1,3 +1,6 @@
-const DIMENSION = 120
+const DIMENSION = {
+    image: 120,
+    icon: 48,
+}
 
 export { DIMENSION }

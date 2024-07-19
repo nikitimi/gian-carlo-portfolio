@@ -1,13 +1,17 @@
 'use client'
 
 import React from 'react'
-import { Loading } from '~/components'
+import { Background, Header, Loading } from '~/components'
+import GalaxyThree from '~/components/GalaxyThree'
 
 const Projects = () => {
     return (
-        <div>
-            <Loading />
-        </div>
+        <Background>
+            <Header />
+            <GalaxyThree>
+                <Loading />
+            </GalaxyThree>
+        </Background>
     )
 }
 

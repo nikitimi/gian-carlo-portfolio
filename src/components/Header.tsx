@@ -1,11 +1,13 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useAppDispatch, useAppSelector } from '~/redux/hooks'
 import { setTheme } from '~/redux/reducers/uiReducer'
+import { DIMENSION } from '~/utils/images'
+import { ROUTE_PREFIX, ROUTES } from '~/utils/routes'
 
 const Header = () => {
-    const dimension = 80
     const darkmode = useAppSelector((state) => state.ui.darkmode)
     const dispatch = useAppDispatch()
 
@@ -26,16 +28,31 @@ const Header = () => {
     }
 
     return (
-        <header className="fixed inset-x-0 z-10 flex items-center bg-white/90 p-6 duration-300 ease-in-out dark:bg-black/90 dark:text-white">
+        <header className="fixed inset-x-0 z-10 flex items-center bg-white/90 p-6 duration-300 ease-in-out dark:bg-black/80 dark:text-white">
             <div className="flex h-10 w-10 items-center gap-1">
                 <Image
                     draggable={false}
                     alt="Syntexia Logo"
                     src="/SyntexiaLogo.svg"
-                    height={dimension}
-                    width={dimension}
+                    sizes={`${DIMENSION.icon}x${DIMENSION.icon}`}
+                    height={DIMENSION.icon}
+                    width={DIMENSION.icon}
                 />
-                {/* <p className="dark:text-green-syntexia">yntexia</p> */}
+            </div>
+            <div className="absolute left-64 flex items-center justify-center gap-10 capitalize">
+                {ROUTES.map((route) => {
+                    return (
+                        <Link key={route} href={route} passHref>
+                            <p>
+                                {route === ROUTE_PREFIX
+                                    ? 'home'
+                                    : route
+                                          .replace(/_/, ' ')
+                                          .replace(ROUTE_PREFIX, '')}
+                            </p>
+                        </Link>
+                    )
+                })}
             </div>
             <div className="absolute right-10 z-10 flex items-center gap-10">
                 <div className="inline-block h-8 w-8">

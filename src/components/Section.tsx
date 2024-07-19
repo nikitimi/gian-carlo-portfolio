@@ -34,7 +34,7 @@ const Section = (props: SectionType) => {
 
     return (
         <section>
-            <div className={`${isWavy ? 'wavy' : ''} py-20`}>
+            <div className={`${isWavy ? 'wavy' : ''} py-10`}>
                 <div className="mx-auto max-w-3xl p-4">
                     <h2
                         className={`${
@@ -96,13 +96,12 @@ const Section = (props: SectionType) => {
                                                             <Image
                                                                 src={iconUrl}
                                                                 alt={props.name}
+                                                                sizes={`${DIMENSION.icon}x${DIMENSION.icon}`}
                                                                 width={
-                                                                    DIMENSION *
-                                                                    0.5
+                                                                    DIMENSION.icon
                                                                 }
                                                                 height={
-                                                                    DIMENSION *
-                                                                    0.5
+                                                                    DIMENSION.icon
                                                                 }
                                                             />
                                                         </button>

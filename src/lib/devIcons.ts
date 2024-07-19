@@ -109,4 +109,9 @@ function processDevIconToUrl(props: DevIconType) {
 }
 
 export type { DevIconType }
-export { devIconLanguages, devIconTechstacks, processDevIconToUrl }
+export {
+    DEV_ICON_BASE_URL,
+    devIconLanguages,
+    devIconTechstacks,
+    processDevIconToUrl,
+}

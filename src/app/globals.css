@@ -5,15 +5,7 @@
 @layer base {
     :root {
         --accent: '#120a3d';
-    }
-    body {
-        @apply font-sans text-xl leading-normal;
-    }
-}
 
-@layer components {
-    .wavy {
-        @apply bg-violet-syntexia;
         /* mask generated from https://css-generators.com/wavy-shapes */
         --mask: radial-gradient(42.94px at 50% 58px, #000 99%, #0000 101%)
                 calc(50% - 40px) 0/80px 51% repeat-x,
@@ -31,6 +23,15 @@
                     #000 101%
                 )
                 50% calc(100% - 20px) / 80px calc(51% - 20px) repeat-x;
+    }
+    body {
+        @apply font-sans text-xl leading-normal;
+    }
+}
+
+@layer components {
+    .wavy {
+        @apply bg-violet-syntexia;
         -webkit-mask: var(--mask);
         mask: var(--mask);
     }

@@ -6,6 +6,19 @@ const nextConfig = {
     // skipTrailingSlashRedirect: true,
     // Optional: Change the output directory `out` -> `dist`
     // distDir: 'dist',
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'www.youtube.com',
+                pathname: '/s/desktop/5766dddc/img/favicon_96x96.png',
+            },
+            {
+                protocol: 'https',
+                hostname: 'cdn.jsdelivr.net',
+            },
+        ],
+    },
 }
 
 export default nextConfig
