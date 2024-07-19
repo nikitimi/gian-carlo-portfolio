@@ -3,7 +3,7 @@
         "class",
         "className",
         "ngClass",
-        ".*Styles",
-        ".*Classes"
+        ".*Styles.*",
+        ".*Classes.*"
     ]
 }

@@ -10,10 +10,8 @@ import { classesArrayToString } from '~/utils/classNames'
 type LibType = 'musician' | 'web'
 
 const AboutMe = () => {
-    const values = ['web', 'musician']
-    const [state, setState] = useState<Lib.SectionType>(
-        Lib[values[0] as LibType]
-    )
+    const values = ['web', 'musician'] as LibType[]
+    const [state, setState] = useState<Lib.SectionType>(Lib[values[0]])
     const activeButtonClasses = ['bg-green-syntexia', 'font-bold']
     const baseButtonClasses = [
         'capitalize',
