@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { type SectionType } from '~/lib/_index'
 import { type BaseComposerType } from '~/lib/musician'
 import { type DevIconType, processDevIconToUrl } from '~/lib/web'
@@ -101,9 +101,15 @@ const SectionValueRenderer = (props: {
 const ComposerRenderer = (props: BaseComposerType) => {
     const { name, nationality, born, died, pieces } = props
     const liClasses = 'text-slate-300 dark:text-white/80'
-    const baseClasses = 'duration-300 ease-in-out w-full text-start'
-    const activeClasses = 'h-64 bg-blue-syntexia/20 rounded-xl'
-    const inactiveClasses = 'h-full bg-transparent text-start'
+    const baseClasses =
+        'duration-300 ease-in-out w-full text-start flex items-center gap-12'
+    const activeClasses = 'h-64 bg-blue-syntexia/20 rounded-xl justify-center'
+    const inactiveClasses = 'h-full bg-transparent text-start justify-start'
+
+    const hideThisSelector = '.hide_this'
+    const activeCallbackClasses = 'opacity-100'
+    const inactiveCallbackClasses = 'opacity-0 absolute'
+    const hideThisBaseClasses = 'absolute opacity-0 duration-300 ease-in-out'
 
     function handleMouseEvent<T extends HTMLElement>(props: {
         e: React.MouseEvent<T>
@@ -143,32 +149,15 @@ const ComposerRenderer = (props: BaseComposerType) => {
         }
     }
 
-    const activeCallbackClasses = 'opacity-100 bg-red-400'
-    const inactiveCallbackClasses = 'opacity-0 absolute'
-    function activeAdditionalCallback(e: React.MouseEvent<HTMLButtonElement>) {
-        const button = e.currentTarget as HTMLButtonElement
-        button.querySelectorAll('p').forEach((paragraph) => {
-            paragraph.classList.remove(
-                ...spreadStringClasses(inactiveCallbackClasses)
+    useEffect(() => {
+        document
+            .querySelectorAll(hideThisSelector)
+            .forEach((element) =>
+                element.classList.add(
+                    ...spreadStringClasses(hideThisBaseClasses)
+                )
             )
-            paragraph.classList.add(
-                ...spreadStringClasses(activeCallbackClasses)
-            )
-        })
-    }
-    function inactiveAdditionalCallback(
-        e: React.MouseEvent<HTMLButtonElement>
-    ) {
-        const button = e.currentTarget as HTMLButtonElement
-        button.querySelectorAll('p').forEach((paragraph) => {
-            paragraph.classList.remove(
-                ...spreadStringClasses(activeCallbackClasses)
-            )
-            paragraph.classList.add(
-                ...spreadStringClasses(inactiveCallbackClasses)
-            )
-        })
-    }
+    }, [])
 
     return (
         <li className={liClasses}>
@@ -179,23 +168,71 @@ const ComposerRenderer = (props: BaseComposerType) => {
                         e,
                         activeClasses,
                         inactiveClasses,
-                        activeAdditionalCallback,
-                        inactiveAdditionalCallback,
+                        activeAdditionalCallback: () => {
+                            const button = e.currentTarget as HTMLButtonElement
+                            button
+                                .querySelectorAll(hideThisSelector)
+                                .forEach((paragraph) => {
+                                    paragraph.classList.remove(
+                                        ...spreadStringClasses(
+                                            inactiveCallbackClasses
+                                        )
+                                    )
+                                    paragraph.classList.add(
+                                        ...spreadStringClasses(
+                                            activeCallbackClasses
+                                        )
+                                    )
+                                })
+                        },
                     })
                 }
                 onMouseLeave={(e) =>
-                    handleMouseEvent({ e, activeClasses, inactiveClasses })
+                    handleMouseEvent({
+                        e,
+                        activeClasses,
+                        inactiveClasses,
+                        inactiveAdditionalCallback: () => {
+                            const button = e.currentTarget as HTMLButtonElement
+                            button
+                                .querySelectorAll(hideThisSelector)
+                                .forEach((paragraph) => {
+                                    paragraph.classList.remove(
+                                        ...spreadStringClasses(
+                                            activeCallbackClasses
+                                        )
+                                    )
+                                    paragraph.classList.add(
+                                        ...spreadStringClasses(
+                                            inactiveCallbackClasses
+                                        )
+                                    )
+                                })
+                        },
+                    })
                 }
             >
-                <h2>{name}</h2>
-                <p className="absolute opacity-0 duration-300 ease-in-out">
-                    Born:<span>{born.date.toDateString().slice(3)}</span>
-                </p>
-                {died && (
-                    <p className="absolute opacity-0 duration-300 ease-in-out">
-                        Died:<span>{died.date.toDateString().slice(3)}</span>
+                <div>
+                    <h2 className="text-2xl">{name}</h2>
+                    <p className={hideThisSelector.replace('.', '')}>
+                        Born:<span>{born.date.toDateString().slice(3)}</span>
                     </p>
-                )}
+                    {died && (
+                        <p className={hideThisSelector.replace('.', '')}>
+                            Died:
+                            <span>{died.date.toDateString().slice(3)}</span>
+                        </p>
+                    )}
+                </div>
+                <div className={hideThisSelector.replace('.', '')}>
+                    <Image
+                        alt={name}
+                        src="/user.png"
+                        width={DIMENSION.image}
+                        height={DIMENSION.image}
+                        sizes={`${DIMENSION.image}x${DIMENSION.image}`}
+                    />
+                </div>
             </button>
         </li>
     )
