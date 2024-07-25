@@ -1,111 +1,113 @@
-type DevIconType = {
-    name: string
+import type { SectionValueType } from './_index'
+
+type DevIconType = SectionValueType & {
     type: 'original' | 'plain'
 }
 
 const DEV_ICON_BASE_URL = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/'
 const devIconLanguages: DevIconType[] = [
     {
-        name: 'javascript',
+        name: 'JavaScript',
         type: 'original',
     },
     {
-        name: 'csharp',
+        name: 'Csharp',
         type: 'original',
     },
     {
-        name: 'dart',
+        name: 'Dart',
         type: 'original',
     },
     {
-        name: 'typescript',
+        name: 'TypeScript',
         type: 'original',
     },
     {
-        name: 'php',
+        name: 'PHP',
         type: 'original',
     },
     {
-        name: 'python',
+        name: 'Python',
         type: 'original',
     },
 ]
 const devIconTechstacks: DevIconType[] = [
     {
-        name: 'html5',
+        name: 'HTML5',
         type: 'original',
     },
     {
-        name: 'flutter',
+        name: 'Flutter',
         type: 'original',
     },
     {
-        name: 'dot-net',
+        name: 'Dot-Net',
         type: 'original',
     },
     {
-        name: 'css3',
+        name: 'CSS3',
         type: 'original',
     },
     {
-        name: 'redux',
+        name: 'Redux',
         type: 'original',
     },
     {
-        name: 'vscode',
+        name: 'VS Code',
         type: 'original',
     },
     {
-        name: 'visualstudio',
+        name: 'Visual Studio',
         type: 'plain',
     },
     {
-        name: 'github',
+        name: 'GitHub',
         type: 'original',
     },
     {
-        name: 'firebase',
+        name: 'Firebase',
         type: 'plain',
     },
     {
-        name: 'nodejs',
+        name: 'NodeJS',
         type: 'original',
     },
     {
-        name: 'react',
+        name: 'React',
 
         type: 'original',
     },
     {
-        name: 'threejs',
+        name: 'ThreeJS',
         type: 'original',
     },
 
     {
-        name: 'nextjs',
+        name: 'NextJS',
         type: 'original',
     },
     {
-        name: 'express',
+        name: 'Express',
         type: 'original',
     },
     {
-        name: 'tailwindcss',
+        name: 'TailwindCSS',
         type: 'original',
     },
     {
-        name: 'sass',
+        name: 'SASS',
         type: 'original',
     },
     {
-        name: 'androidstudio',
+        name: 'Android Studio',
         type: 'original',
     },
 ]
 
 function processDevIconToUrl(props: DevIconType) {
     const { name, type } = props
-    return `${DEV_ICON_BASE_URL}${name}/${name}-${type}.svg`
+    const formattedName = name.replace(/ /g, '').toLowerCase()
+    return `${DEV_ICON_BASE_URL}${formattedName}/${formattedName}-${type}.svg`
 }
 
 export type { DevIconType }

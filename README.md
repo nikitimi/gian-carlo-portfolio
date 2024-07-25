@@ -9,13 +9,13 @@
 [issues_url]: https://github.com/nikitimi/gian-carlo-portfolio?tab=readme-ov-file#issues
 [fix_url]: https://github.com/nikitimi/gian-carlo-portfolio?tab=readme-ov-file#fix
 
-| <h1>Table of Contents </h1>              |                          |
-| :--------------------------------------- | :----------------------- |
-| [Future Upgrades][upgrades_url]          | [Home][home_url]         |
-|                                          | [Projects][projects_url] |
-|                                          | [About Me][about_me_url] |
-| [Issues][issues_url]                     |                          |
-| [Fix][fix_url]                           |                          |
+## Table of contents
+
+| [Future Upgrades][upgrades_url] | [Issues][issues_url] | [Fix][fix_url] |
+| :------------------------------ | :------------------- | -------------- |
+| [Home][home_url]                |
+| [Projects][projects_url]        |
+| [About Me][about_me_url]        |
 
 ---
 
@@ -27,7 +27,6 @@
 
 -   Catchy 3D Animation <strong>RealSyntexia themed</strong>
 -   Brief description about my skills
-
 
 ## Projects
 
@@ -51,11 +50,15 @@
 # Issues:
 
 -   [#1][fix_url] 3D Objects rendered in Canvas rerenders when the Dom size changes
+-   [#2][fix_url] TypeScript linting error for `PlaceType` located in `~/src/lib/musician/index.ts`
 
 # Fix:
+
+[issue_two_url]: https://stackoverflow.com/questions/78791215/typescript-country-state-wherein-the-states-auto-complete-options-changes-b
 
 ##### Possible way to fix
 
 ---
 
 -   [Issue #1][issues_url] Move the `GalaxyThree.tsx` state inside redux to retain animation rendering despite changing route
+-   [Issue #2][issue_two_url] StackOverflow Question

@@ -1,36 +1,18 @@
-import {
-    devIconLanguages,
-    devIconTechstacks,
-    type DevIconType,
-} from './devIcons'
+import { BaseComposerType, composers } from './musician'
+import { devIconLanguages, devIconTechstacks, type DevIconType } from './web'
 
-type SectionValueType = Omit<DevIconType, 'type'>
+type SectionValueType = {
+    name: string
+}
 type SectionType = {
     sectionTitle: string
     sectionItems: {
         title: string
-        value: (SectionValueType | DevIconType)[]
+        value: (SectionValueType | DevIconType | BaseComposerType)[]
     }[]
     isWavy?: boolean
 }
 
-const composers = [
-    { name: 'Ludwig van Beethoven' },
-    { name: 'Niccolò Paganini' },
-    { name: 'Franz Liszt' },
-    { name: 'Frédéric François Chopin' },
-    { name: 'Sergei Vasilyevich Rachmaninoff' },
-    { name: 'Claude Debussy' },
-    { name: 'Francisco Buencamino Sr.' },
-    { name: 'Shaun Choo' },
-]
-const pieces = [
-    { name: 'Ballade No 1 in G Minor Op 23' },
-    { name: 'Debussy - Reverie' },
-    { name: 'Transcendental Etude No.8' },
-    { name: 'Rachmaninoff/Kreisler - Liebesleid' },
-    { name: 'Caprice No. 24 in A minor' },
-]
 const web: SectionType = {
     sectionTitle: 'Web Developer',
     sectionItems: [
@@ -44,20 +26,17 @@ const web: SectionType = {
         },
     ],
 }
+
 const musician: SectionType = {
-    isWavy: true,
     sectionTitle: 'Musician',
     sectionItems: [
         {
-            title: 'My go to composers',
+            title: 'My favorite composers',
             value: composers,
         },
-        {
-            title: 'My all-time favorite pieces',
-            value: pieces,
-        },
     ],
+    isWavy: true,
 }
 
-export type { SectionType }
-export { composers, pieces, web, musician }
+export type { SectionType, SectionValueType }
+export { web, musician }

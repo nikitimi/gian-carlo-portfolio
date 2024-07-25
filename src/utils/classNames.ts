@@ -6,4 +6,18 @@ function classesArrayToString(...tokens: string[]) {
     return holderClasses.trim()
 }
 
-export { classesArrayToString }
+function addRemoveClassesToElement<T extends HTMLElement>(
+    addClasses: string,
+    removeClasses: string,
+    element: T
+) {
+    element.classList.add(...spreadStringClasses(addClasses))
+    element.classList.remove(...spreadStringClasses(removeClasses))
+}
+
+function spreadStringClasses(Classes: string) {
+    const classesDivider = ' '
+    return Classes.split(classesDivider)
+}
+
+export { classesArrayToString, addRemoveClassesToElement, spreadStringClasses }
