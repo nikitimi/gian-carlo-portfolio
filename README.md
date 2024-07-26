@@ -50,15 +50,19 @@
 # Issues:
 
 -   [#1][fix_url] 3D Objects rendered in Canvas rerenders when the Dom size changes
--   [#2][fix_url] TypeScript linting error for `PlaceType` located in `~/src/lib/musician/index.ts`
 
 # Fix:
 
-[issue_two_url]: https://stackoverflow.com/questions/78791215/typescript-country-state-wherein-the-states-auto-complete-options-changes-b
+[fix_url_stackoverflow_country_state]: https://stackoverflow.com/questions/78791215/typescript-country-state-wherein-the-states-auto-complete-options-changes-b
+
+##### Fixed:
+
+---
+
+-   [#2][fix_url_stackoverflow_country_state] TypeScript linting error for `PlaceType` located in `~/src/lib/musician/index.ts` _2024/07/26_
 
 ##### Possible way to fix
 
 ---
 
 -   [Issue #1][issues_url] Move the `GalaxyThree.tsx` state inside redux to retain animation rendering despite changing route
--   [Issue #2][issue_two_url] StackOverflow Question

@@ -1,1 +1,1 @@
-export const SINGAPORE = ['undefined'] as const
+export const SINGAPORE = [] as const
